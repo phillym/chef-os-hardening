@@ -13,6 +13,10 @@ platforms:
   driver_config:
     box: ubuntu/trusty64
     box_url: https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20150609.0.10/providers/virtualbox.box
+- name: ubuntu-16.04
+  driver_config:
+    box: ubuntu/xenial64
+    box_url: https://atlas.hashicorp.com/ubuntu/boxes/xenial64/versions/20160420.3.0/providers/virtualbox.box
 - name: centos-5.11
   driver_config:
     box: opscode-centos-5.11
@@ -55,10 +59,14 @@ suites:
 - name: default
   run_list:
   - recipe[os-hardening::default]
-- name: modules_disabled
-  run_list:
-  - recipe[os-hardening::default]
-  attributes:
-    security:
-      kernel:
-        enable_module_loading: false
+  verifier:
+    inspec_tests:
+    # - https://github.com/dev-sec/tests-os-hardening
+    - /Users/chartmann/Development/hardening/tests-os-hardening
+# - name: modules_disabled
+#   run_list:
+#   - recipe[os-hardening::default]
+#   attributes:
+#     security:
+#       kernel:
+#         enable_module_loading: false
