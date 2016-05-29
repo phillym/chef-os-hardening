@@ -61,12 +61,14 @@ suites:
   - recipe[os-hardening::default]
   verifier:
     inspec_tests:
-    # - https://github.com/dev-sec/tests-os-hardening
-    - /Users/chartmann/Development/hardening/tests-os-hardening
-# - name: modules_disabled
-#   run_list:
-#   - recipe[os-hardening::default]
-#   attributes:
-#     security:
-#       kernel:
-#         enable_module_loading: false
+    - https://github.com/dev-sec/tests-os-hardening
+- name: modules_disabled
+  run_list:
+  - recipe[os-hardening::default]
+  attributes:
+    security:
+      kernel:
+        enable_module_loading: false
+  verifier:
+    inspec_tests:
+    - https://github.com/dev-sec/tests-os-hardening
