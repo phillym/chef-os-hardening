@@ -66,9 +66,10 @@ suites:
   run_list:
   - recipe[os-hardening::default]
   attributes:
-    security:
-      kernel:
-        enable_module_loading: false
+    os-hardening:
+      security:
+        kernel:
+          enable_module_loading: false
   verifier:
     inspec_tests:
     - https://github.com/dev-sec/tests-os-hardening
